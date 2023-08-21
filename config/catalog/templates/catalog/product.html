@@ -1,9 +1,10 @@
 {% extends 'catalog/base.html' %}
+{% load my_tags %}
 {% block content %}
 <div class="card-body">
     <h3 class="card-title pricing-card-title">{{ object.name }}</h3>
     <p><b>Цена: {{ object.price }} рублей</b></p>
     <p>{{ object.description }}</p>
-    <img src="{{ object.preview }}" />
+    <img src="{{ object.preview|mediapath }}" />
 </div>
 {% endblock %}
