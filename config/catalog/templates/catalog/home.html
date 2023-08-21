@@ -5,14 +5,14 @@
     <p class="lead">Electrostore - лучший магазин электроники</p>
 </div>
 <div class="row text-center">
-    <div class="col-3">
+    <div class="col-12">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
                 <h2 class="my-0 font-weight-normal">Каталог</h2>
             </div>
             {% for object in object_list %}
                 <div class="card-body">
-                    <li><h4 class="card-title pricing-card-title">{{ object.name }}</h4></li>
+                    <h4 class="card-title pricing-card-title">{{ object.name }}</h4>
                     <p>{{ object.description|slice:100}}</p>
                     <a href="product/{{ object.pk }}" class="btn btn-secondary" role="button">Купить</a>
                 </div>
