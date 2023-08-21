@@ -5,8 +5,8 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
-    description = models.TextField(verbose_name='Описание', blank=True)
-    preview = models.ImageField(verbose_name='Изображение', blank=True)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    preview = models.ImageField(verbose_name='Изображение', blank=True, null=True)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     price = models.IntegerField(verbose_name='Цена')
     date_created = models.DateField(verbose_name='Создано')
@@ -22,7 +22,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
-    description = models.TextField(verbose_name='Описание', blank=True)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
 
     class Meta:
         verbose_name = 'категория'
