@@ -102,7 +102,7 @@ class Command(BaseCommand):
                 "pk": 9,
                 "name": "Подставка охладительная для ноутбука",
                 "description": "Подставка для охлаждения ноутбука",
-                "preview": "laptop_cooler.jpg",
+                "preview": "laptop_cooler.jpeg",
                 "category": Category.objects.get(pk=3),
                 "price": 5000,
                 "date_created": "2023-08-21",
