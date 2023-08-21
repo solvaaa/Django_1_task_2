@@ -5,6 +5,6 @@
     <h3 class="card-title pricing-card-title">{{ object.name }}</h3>
     <p><b>Цена: {{ object.price }} рублей</b></p>
     <p>{{ object.description }}</p>
-    <img src="{{ object.preview|mediapath }}" />
+    <img src="{% mediapath object.preview %}" />
 </div>
 {% endblock %}
