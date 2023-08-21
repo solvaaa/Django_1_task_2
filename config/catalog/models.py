@@ -5,12 +5,12 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
-    description = models.TextField(verbose_name='Описание')
-    preview = models.ImageField(verbose_name='Изображение')
+    description = models.TextField(verbose_name='Описание', null=True)
+    preview = models.ImageField(verbose_name='Изображение', null=True)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     price = models.IntegerField(verbose_name='Цена')
     date_created = models.DateField(verbose_name='Создано')
-    date_modified = models.DateField(verbose_name='Изменено')
+    date_modified = models.DateField(verbose_name='Изменено', null=True)
 
     def __str__(self):
         return f'{self.name} {self.category} {self.price}'
@@ -22,8 +22,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название')
-    description = models.TextField(verbose_name='Описание')
-    created_at = models.DateField(verbose_name='Создано', null=True)
+    description = models.TextField(verbose_name='Описание', null=True)
 
     class Meta:
         verbose_name = 'категория'
