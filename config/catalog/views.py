@@ -19,5 +19,10 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def product(request):
-    return render(request, 'catalog/product.html')
+def product(request, product_id):
+
+    object = Product.objects.get(pk=product_id).__dict__
+    context = {
+        'object': object
+    }
+    return render(request, 'catalog/product.html', context)

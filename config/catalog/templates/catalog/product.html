@@ -1,9 +1,9 @@
-{% extends 'catalog/base.html %}
+{% extends 'catalog/base.html' %}
 {% block content %}
 <div class="card-body">
-    <li><h4 class="card-title pricing-card-title">{{ object.name }}</h4></li>
+    <h3 class="card-title pricing-card-title">{{ object.name }}</h3>
+    <p><b>Цена: {{ object.price }} рублей</b></p>
     <p>{{ object.description }}</p>
-    <p>{{ </p>
-    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+    <img src="{{ object.preview }}" />
 </div>
 {% endblock %}
