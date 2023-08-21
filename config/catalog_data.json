@@ -1,0 +1,143 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "IPhone 13",
+      "description": "Смартфон от Apple, iPhone  13, OS X",
+      "preview": "",
+      "category": 1,
+      "price": 100000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Xiaomi 11T Pro",
+      "description": "Смартфон от Xiaomi, Android",
+      "preview": "",
+      "category": 1,
+      "price": 30000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Samsung Galaxy A8",
+      "description": "Смартфон от Samsung, Android",
+      "preview": "",
+      "category": 1,
+      "price": 40000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Lenovo Ideapad",
+      "description": "Ноутбук от Lenovo. 8 часов автономной работы. ОС Windows 11",
+      "preview": "",
+      "category": 2,
+      "price": 80000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Huawei MateBook",
+      "description": "Ноутбук от Huawei. 16 Gb RAM. ОС Windows 10",
+      "preview": "",
+      "category": 2,
+      "price": 60000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Apple MacBook Air",
+      "description": "Ноутбук от Apple. SSD: 256 Gb. ОС MacOS",
+      "preview": "",
+      "category": 2,
+      "price": 100000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Чехол для iPhone 13",
+      "description": "Чехол с котиками",
+      "preview": "",
+      "category": 3,
+      "price": 1200,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Плёнка защитная для Xiaomi 11T Pro",
+      "description": "Плёнка для защиты экрана",
+      "preview": "",
+      "category": 3,
+      "price": 500,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Подставка охладительная для ноутбука",
+      "description": "Подставка для охлаждения ноутбука",
+      "preview": "",
+      "category": 3,
+      "price": 5000,
+      "date_created": "2023-08-21",
+      "date_modified": "2023-08-21"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Смартфоны",
+      "description": "Электроника и девайсы: смартфоны"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Ноутбуки",
+      "description": "Электроника и девайсы: ноутбуки"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Аксессуары",
+      "description": "Аксессуары для девайсов"
+    }
+  }
+]
