@@ -17,11 +17,11 @@
                     <p>{{ object.content}}</p>
                     <div class="btn-group">
                         <a href="{% url 'catalog:blogpost' object.pk %}"
-                            class="btn btn-sm btn-outline-secondary">View</a>
-                        <a href="{% url 'catalog:blogpost' object.pk %}"
-                            class="btn btn-sm btn-outline-secondary">Edit</a>
-                        <a href="{% url 'catalog:blogpost' object.pk %}"
-                            class="btn btn-sm btn-outline-secondary">Delete</a>
+                            class="btn btn-sm btn-outline-secondary" type="button">View</a>
+                        <a href="{% url 'catalog:update_blogpost' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary" type="button">Edit</a>
+                        <a href="{% url 'catalog:delete_blogpost' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary" type="button">Delete</a>
                     </div>
                 </div>
 
