@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from catalog.models import Product, BlogPost
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from pytils.translit import slugify
@@ -51,6 +51,9 @@ class BlogPostDetailView(DetailView):
 class BlogPostCreateView(CreateView):
     model = BlogPost
     fields = ('title', 'content', 'preview', 'is_published')
+    extra_context = {
+        'button_name': "Создать"
+    }
     success_url = reverse_lazy('catalog:home')
 
     def form_valid(self, form):
@@ -61,11 +64,15 @@ class BlogPostCreateView(CreateView):
         return super().form_valid(form)
 
 
-
 class BlogPostUpdateView(UpdateView):
     model = BlogPost
     fields = ('title', 'content', 'preview', 'is_published')
-    success_url = reverse_lazy('catalog:home')
+    extra_context = {
+        'button_name': "Редактировать"
+    }
+
+    def get_success_url(self):
+        return reverse("catalog:blogpost", args=[self.kwargs.get('slug')])
 
 
 class BlogPostDeleteView(DeleteView):
