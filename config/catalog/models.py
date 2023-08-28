@@ -9,8 +9,8 @@ class Product(models.Model):
     preview = models.ImageField(verbose_name='Изображение', blank=True, null=True)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     price = models.IntegerField(verbose_name='Цена')
-    date_created = models.DateField(verbose_name='Создано')
-    date_modified = models.DateField(verbose_name='Изменено')
+    created_at = models.DateField(verbose_name='Создано', auto_now_add=True)
+    modified_at = models.DateField(verbose_name='Изменено', auto_now_add=True)
 
     def __str__(self):
         return f'{self.name} {self.category} {self.price}'
