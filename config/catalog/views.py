@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from catalog.models import Product
 from django.views.generic import ListView, TemplateView, DetailView
 
@@ -24,14 +23,6 @@ class ContactsView(TemplateView):
         context = {}
         print(f'You have new message from {name}({email}): {message}')
         return super(TemplateView, self).render_to_response(context)
-
-'''def product(request, product_id):
-
-    object = Product.objects.get(pk=product_id).__dict__
-    context = {
-        'object': object
-    }
-    return render(request, 'catalog/product.html', context)'''
 
 
 class ProductListView(ListView):
