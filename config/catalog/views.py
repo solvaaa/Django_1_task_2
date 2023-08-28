@@ -1,16 +1,9 @@
 from django.urls import reverse_lazy
 from catalog.models import Product, BlogPost
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
-from random import randint
+from pytils.translit import slugify
 
 # Create your views here.
-
-
-def get_slug(title):
-    slug = "-".join(title.split())
-    slug += '-'
-    slug += str(randint(1, 10))
-    return slug
 
 
 class ContactsView(TemplateView):
@@ -61,9 +54,10 @@ class BlogPostCreateView(CreateView):
     success_url = reverse_lazy('catalog:home')
 
     def form_valid(self, form):
-        new_post = form.save(commit=False)
-        new_post.slug = get_slug(new_post.title)
-        new_post.save()
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.slug = slugify(new_post.title)
+            new_post.save()
         return super().form_valid(form)
 
 
