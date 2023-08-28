@@ -16,11 +16,11 @@
                     <h4 class="card-title pricing-card-title">{{ object.title }}</h4>
                     <p>{{ object.content}}</p>
                     <div class="btn-group">
-                        <a href="{% url 'catalog:blogpost' object.pk %}"
+                        <a href="{% url 'catalog:blogpost' object.slug %}"
                             class="btn btn-sm btn-outline-secondary" type="button">View</a>
-                        <a href="{% url 'catalog:update_blogpost' object.pk %}"
+                        <a href="{% url 'catalog:update_blogpost' object.slug %}"
                             class="btn btn-sm btn-outline-secondary" type="button">Edit</a>
-                        <a href="{% url 'catalog:delete_blogpost' object.pk %}"
+                        <a href="{% url 'catalog:delete_blogpost' object.slug %}"
                             class="btn btn-sm btn-outline-secondary" type="button">Delete</a>
                     </div>
                 </div>

@@ -17,5 +17,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title',)
-    search_fields = ('title', 'content')
+    list_display = ('slug', 'title',)
+    search_fields = ('title', 'content',)

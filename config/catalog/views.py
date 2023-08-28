@@ -1,9 +1,16 @@
 from django.urls import reverse_lazy
 from catalog.models import Product, BlogPost
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
-
+from random import randint
 
 # Create your views here.
+
+
+def get_slug(title):
+    slug = "-".join(title.split())
+    slug += '-'
+    slug += str(randint(1, 10))
+    return slug
 
 
 class ContactsView(TemplateView):
@@ -32,6 +39,11 @@ class ProductDetailView(DetailView):
 class BlogPostListView(ListView):
     model = BlogPost
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        queryset = queryset.filter(is_published=True)
+        return queryset
+
 
 class BlogPostDetailView(DetailView):
     model = BlogPost
@@ -41,6 +53,13 @@ class BlogPostCreateView(CreateView):
     model = BlogPost
     fields = ('title', 'content', 'preview', 'is_published')
     success_url = reverse_lazy('catalog:home')
+
+    def form_valid(self, form):
+        new_post = form.save(commit=False)
+        new_post.slug = get_slug(new_post.title)
+        new_post.save()
+        return super().form_valid(form)
+
 
 
 class BlogPostUpdateView(UpdateView):

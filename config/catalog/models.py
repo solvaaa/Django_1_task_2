@@ -1,6 +1,9 @@
 from django.db import models
 
 # Create your models here.
+def get_slug(title):
+    slug = "-".join(title.split())
+    return slug
 
 
 class Product(models.Model):
