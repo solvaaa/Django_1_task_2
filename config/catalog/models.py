@@ -34,7 +34,7 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
-    slug = models.CharField(max_length=100)
+    slug = models.CharField(max_length=100, primary_key=True)
     content = models.TextField(verbose_name='Содержимое', blank=True, null=True)
     preview = models.ImageField(verbose_name='Изображение', blank=True, null=True)
     created_at = models.DateField(verbose_name='Создано', auto_now_add=True)
