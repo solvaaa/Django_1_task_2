@@ -11,7 +11,16 @@
                 <div class="card-body">
                     <h4 class="card-title pricing-card-title">{{ object.title }}</h4>
                     <p>{{ object.content}}</p>
+                    <div class="btn-group">
+                        <a href="{% url 'catalog:blogpost' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary">View</a>
+                        <a href="{% url 'catalog:blogpost' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a href="{% url 'catalog:blogpost' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary">Delete</a>
+                    </div>
                 </div>
+
             {% endfor %}
         </div>
     </div>
