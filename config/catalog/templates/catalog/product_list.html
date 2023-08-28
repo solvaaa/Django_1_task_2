@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<div class="row text-center">
+    <div class="col-12">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h2 class="my-0 font-weight-normal">Каталог</h2>
+            </div>
+            {% for object in object_list %}
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">{{ object.name }}</h4>
+                    <p>{{ object.description|slice:100}}</p>
+                    <a href="{% url 'catalog:product' object.pk %}"
+                       class="btn btn-sm btn-outline-secondary">Купить</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
