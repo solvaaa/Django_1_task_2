@@ -31,14 +31,13 @@ class ContactsView(TemplateView):
         'title': "Контакты Electrostore",
     }
 
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        if self.request.method == 'POST':
-            name = self.request.POST.get('name')
-            email = self.request.POST.get('email')
-            message = self.request.POST.get('message')
-            print(f'You have new message from {name}({email}): {message}')
-        return context_data
+    def post(self, request):
+        name = self.request.POST.get('name')
+        email = self.request.POST.get('email')
+        message = self.request.POST.get('message')
+        context = {}
+        print(f'You have new message from {name}({email}): {message}')
+        return super(TemplateView, self).render_to_response(context)
 
 def product(request, product_id):
 
