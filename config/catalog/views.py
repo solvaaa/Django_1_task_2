@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from catalog.models import Product
+from django.views.generic import ListView, TemplateView
 
 
 # Create your views here.
-def home(request):
-    context = {
+class HomeView(TemplateView):
+    template_name = 'catalog/home.html'
+    extra_context = {
+        'title': 'Каталог Electrostore',
         'object_list': Product.objects.all()
     }
-    return render(request, 'catalog/home.html', context)
 
 
 def contacts(request):
