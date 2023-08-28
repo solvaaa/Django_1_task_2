@@ -7,6 +7,10 @@
                 <h1 class="display-4">Electrostore</h1>
                 <p class="lead">Electrostore - лучший магазин электроники</p>
             </div>
+            <div class="col-12">
+                <a href="{% url 'catalog:create_blogpost' %}"
+                   class="btn btn-sm btn-outline-secondary">Create post</a>
+            </div>
             {% for object in object_list %}
                 <div class="card-body">
                     <h4 class="card-title pricing-card-title">{{ object.title }}</h4>

@@ -1,5 +1,6 @@
+from django.urls import reverse_lazy
 from catalog.models import Product, BlogPost
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, TemplateView, DetailView, CreateView
 
 
 # Create your views here.
@@ -34,3 +35,9 @@ class BlogPostListView(ListView):
 
 class BlogPostDetailView(DetailView):
     model = BlogPost
+
+
+class BlogPostCreateView(CreateView):
+    model = BlogPost
+    fields = ('title', 'content', 'preview', 'is_published')
+    success_url = reverse_lazy('catalog:home')
