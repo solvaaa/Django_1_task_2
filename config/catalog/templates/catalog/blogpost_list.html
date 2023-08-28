@@ -15,6 +15,7 @@
                 <div class="card-body">
                     <h4 class="card-title pricing-card-title">{{ object.title }}</h4>
                     <p>{{ object.content}}</p>
+                    <p>Просмотры: {{ object.number_of_views}}</p>
                     <div class="btn-group">
                         <a href="{% url 'catalog:blogpost' object.slug %}"
                             class="btn btn-sm btn-outline-secondary" type="button">View</a>

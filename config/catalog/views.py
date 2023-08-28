@@ -48,6 +48,12 @@ class BlogPostListView(ListView):
 class BlogPostDetailView(DetailView):
     model = BlogPost
 
+    def get_object(self, queryset=None):
+        object = super().get_object(queryset)
+        object.number_of_views += 1
+        object.save()
+        return object
+
 
 class BlogPostCreateView(CreateView):
     model = BlogPost
