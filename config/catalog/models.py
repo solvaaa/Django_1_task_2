@@ -30,3 +30,20 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Заголовок')
+    slug = models.CharField(max_length=100)
+    content = models.TextField(verbose_name='Содержимое', blank=True, null=True)
+    preview = models.ImageField(verbose_name='Изображение', blank=True, null=True)
+    created_at = models.DateField(verbose_name='Создано', auto_now_add=True)
+    is_published = models.BooleanField(verbose_name='Опубликовано?', default=False)
+    number_of_views = models.IntegerField(verbose_name='Просмотры', default=0)
+
+    def __str__(self):
+        return f"{self.name}, {self.is_published}"
+
+    class Meta:
+        verbose_name = 'пост'
+        verbose_name_plural = 'посты'
