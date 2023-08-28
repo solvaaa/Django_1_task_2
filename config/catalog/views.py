@@ -8,18 +8,37 @@ class HomeView(TemplateView):
     template_name = 'catalog/home.html'
     extra_context = {
         'title': 'Каталог Electrostore',
-        'object_list': Product.objects.all()
     }
 
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data["object_list"] = Product.objects.all()
+        return context_data
 
-def contacts(request):
+
+'''def contacts(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
         message = request.POST.get('message')
         print(f'You have new message from {name}({email}): {message}')
-    return render(request, 'catalog/contacts.html')
+    return render(request, 'catalog/contacts.html')'''
 
+
+class ContactsView(TemplateView):
+    template_name = "catalog/contacts.html"
+    extra_context = {
+        'title': "Контакты Electrostore",
+    }
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        if self.request.method == 'POST':
+            name = self.request.POST.get('name')
+            email = self.request.POST.get('email')
+            message = self.request.POST.get('message')
+            print(f'You have new message from {name}({email}): {message}')
+        return context_data
 
 def product(request, product_id):
 
