@@ -1,13 +1,8 @@
-from catalog.models import Product
+from catalog.models import Product, BlogPost
 from django.views.generic import ListView, TemplateView, DetailView
 
 
 # Create your views here.
-class HomeView(TemplateView):
-    template_name = 'catalog/home.html'
-    extra_context = {
-        'title': 'Каталог Electrostore',
-    }
 
 
 class ContactsView(TemplateView):
@@ -31,3 +26,7 @@ class ProductListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
+
+
+class BlogPostListView(ListView):
+    model = BlogPost
