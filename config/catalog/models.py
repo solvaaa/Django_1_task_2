@@ -42,7 +42,7 @@ class BlogPost(models.Model):
     number_of_views = models.IntegerField(verbose_name='Просмотры', default=0)
 
     def __str__(self):
-        return f"{self.name}, {self.is_published}"
+        return f"{self.title}, {self.is_published}"
 
     class Meta:
         verbose_name = 'пост'
