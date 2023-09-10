@@ -6,5 +6,25 @@
     <p><b>Цена: {{ object.price }} рублей</b></p>
     <p>{{ object.description }}</p>
     <img src="{% mediapath object.preview %}" />
+    <p><h4>Версии: </h4></p>
+    <p>
+        {% for version in versions %}
+            {{ version.version_number }}
+            {% if version.version_name %}
+                : {{ version.version_name }}
+            {% endif %}
+            {% if forloop.last == 0 %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+    </p>
+</div>
+<div class="card-footer">
+    <div class="btn-group">
+        <a href="{% url 'catalog:update_product' object.pk %}"
+           class="btn btn-sm btn-outline-secondary" type="button">Edit</a>
+        <a href="{% url 'catalog:delete_product' object.pk %}"
+           class="btn btn-sm btn-outline-secondary" type="button">Delete</a>
+    </div>
 </div>
 {% endblock %}
