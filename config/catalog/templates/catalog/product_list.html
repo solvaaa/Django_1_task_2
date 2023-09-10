@@ -6,12 +6,20 @@
             <div class="card-header">
                 <h2 class="my-0 font-weight-normal">Каталог</h2>
             </div>
+            <div class="col-12 mb-1 mt-4">
+                <a href="{% url 'catalog:create_product' %}"
+                   class="btn btn-sm btn-outline-secondary">Добавить товар</a>
+            </div>
             {% for object in object_list %}
                 <div class="card-body">
                     <h4 class="card-title pricing-card-title">{{ object.name }}</h4>
                     <p>{{ object.description|slice:100}}</p>
-                    <a href="{% url 'catalog:product' object.pk %}"
-                       class="btn btn-sm btn-outline-secondary">Купить</a>
+                        <a href="{% url 'catalog:product' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary" type="button">View</a>
+                        <a href="{% url 'catalog:update_product' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary" type="button">Edit</a>
+                        <a href="{% url 'catalog:delete_product' object.pk %}"
+                            class="btn btn-sm btn-outline-secondary" type="button">Delete</a>
                 </div>
             {% endfor %}
         </div>
