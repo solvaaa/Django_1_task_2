@@ -26,13 +26,23 @@ class ContactsView(TemplateView):
 class ProductListView(ListView):
     model = Product
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        versions = {}
+        for object in context['object_list']:
+            pk = object.pk
+            versions[pk] = Version.objects.filter(is_active=True, product=pk)
+        context['versions'] = versions
+        return context
+
 
 class ProductDetailView(DetailView):
     model = Product
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['versions'] = Version.objects.filter(is_active=True)
+        pk = context['object'].pk
+        context['versions'] = Version.objects.filter(is_active=True, product=pk)
         return context
 
 

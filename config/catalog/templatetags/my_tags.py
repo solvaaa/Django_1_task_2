@@ -11,6 +11,11 @@ def mediapath(text, autoescape=True):
     return media_path
 
 
+@register.filter
+def get_obj_by_pk(obj, key):
+    return obj[key]
+
+
 @register.simple_tag
 def mediapath(text):
     return f'{MEDIA_URL}{text}'
