@@ -8,6 +8,11 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
     def check_restricted_words(self, text):
         restricted_words = [
             'казино',
@@ -45,3 +50,11 @@ class VersionForm(forms.ModelForm):
     class Meta:
         model = Version
         fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        for field_name, field in self.fields.items():
+            if field_name != 'is_active':
+                field.widget.attrs['class'] = 'form-control'
+            else:
+                field.widget.attrs['class'] = 'from-check'
