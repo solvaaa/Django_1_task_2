@@ -62,5 +62,28 @@ class EmailConfirmEmailView(View):
             return redirect('/')
 
 
+class PasswordResetView(TemplateView):
+    template_name = 'users/password_reset.html'
 
+    def post(self, request):
+        email = self.request.POST.get('email')
+        print(email)
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            user = None
 
+        if User is not None:
+            password = User.objects.make_random_password(12)
+            user.set_password(
+                password
+            )
+            send_mail(
+                subject='Сброс пароля',
+                message=f'Ваш новый пароль:\n{password}',
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email]
+            )
+            return redirect('users:login')
+        else:
+            return redirect('/')
