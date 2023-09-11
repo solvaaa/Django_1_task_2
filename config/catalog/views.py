@@ -117,8 +117,9 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = "users:login"
+    redirect_field_name = "redirect_to"
     model = Product
     extra_context = {
         'form_name': 'Редактирование',
