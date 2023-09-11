@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from catalog.models import Product, BlogPost, Version
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
@@ -97,7 +98,9 @@ class BlogPostDeleteView(DeleteView):
     success_url = reverse_lazy('catalog:home')
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
+    login_url = "users:login"
+    redirect_field_name = "redirect_to"
     model = Product
     extra_context = {
         'form_name': 'Добавление',
@@ -105,6 +108,14 @@ class ProductCreateView(CreateView):
     }
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.user = self.request.user
+            new_post.save()
+        return super().form_valid(form)
+
 
 
 class ProductUpdateView(UpdateView):
@@ -138,6 +149,8 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = "users:login"
+    redirect_field_name = "redirect_to"
     model = Product
     success_url = reverse_lazy('catalog:catalog')

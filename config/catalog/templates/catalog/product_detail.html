@@ -28,5 +28,10 @@
         <a href="{% url 'catalog:delete_product' object.pk %}"
            class="btn btn-sm btn-outline-secondary" type="button">Delete</a>
     </div>
+    <p class="mt-20">
+        {% if object.user.email %}
+            Создатель: {{ object.user.email }}
+        {% endif %}
+    </p>
 </div>
 {% endblock %}
