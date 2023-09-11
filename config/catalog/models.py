@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 # Create your models here.
@@ -15,6 +16,7 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='Цена')
     created_at = models.DateField(verbose_name='Создано', auto_now_add=True)
     modified_at = models.DateField(verbose_name='Изменено', auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return f'{self.name} {self.category} {self.price}'
