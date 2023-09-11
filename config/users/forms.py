@@ -21,3 +21,4 @@ class UserProfileForm(UserChangeForm):
 
         self.fields['password'].widget = forms.HiddenInput()
         self.fields['is_verified'].disabled = True
+        self.fields['is_verified'].widget.attrs['class'] = 'form-check-input'
