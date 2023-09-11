@@ -20,4 +20,4 @@ class UserProfileForm(UserChangeForm):
         super().__init__(*args, **kwargs)
 
         self.fields['password'].widget = forms.HiddenInput()
-        self.fields['is_verified'].widget.attrs['readonly'] = True
+        self.fields['is_verified'].disabled = True

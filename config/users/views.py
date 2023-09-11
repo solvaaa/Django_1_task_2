@@ -55,7 +55,7 @@ class EmailConfirmEmailView(View):
             user = None
 
         if user is not None:
-            user.is_active = True
+            user.is_verified = True
             user.save()
             return redirect('users:profile')
         else:
