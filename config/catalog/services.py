@@ -1,5 +1,5 @@
 from catalog.models import Category
-import settings
+import config.settings as settings
 from django.core.cache import cache
 
 
